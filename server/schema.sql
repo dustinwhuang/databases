@@ -1,3 +1,4 @@
+DROP DATABASE chat;
 CREATE DATABASE chat;
 
 USE chat;
@@ -7,15 +8,14 @@ CREATE TABLE messages (
   objectId INT PRIMARY KEY AUTO_INCREMENT,
   userId INT,
   text TEXT,
-  room TEXT,
-  createdAt DATETIME,
-  updatedAt DATETIME
+  roomname TEXT,
+  createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
 /* Create other tables and define schemas for them here! */
 CREATE TABLE users (
   id INT PRIMARY KEY AUTO_INCREMENT,
-  username TEXT,
+  username VARCHAR(32) UNIQUE,
   textColor TEXT,
   fontFamily TEXT,
   signOffMsg TEXT,

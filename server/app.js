@@ -15,11 +15,15 @@ module.exports.app = app;
 app.set('port', 3000);
 
 // Logging and parsing
-app.use(morgan('dev')); // ???
+app.use(morgan('dev')); // logs requests
 app.use(parser.json());
+app.use(parser.urlencoded({
+  extended: true
+})); // parse nested object as actual object output
 
 // Set up our routes
 app.use('/classes', router);
+
 
 // Serve the client files
 app.use(express.static(__dirname + '/../client'));
