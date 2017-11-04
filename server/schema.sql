@@ -24,11 +24,15 @@ CREATE TABLE users (
 
 CREATE TABLE friends (
   id INT PRIMARY KEY AUTO_INCREMENT,
-  userId INT,
-  friendId INT,
+  userId INT NOT NULL,
+  friendId INT NOT NULL,
   friendsFrom DATETIME,
-  FOREIGN KEY (userId, friendId)
-    REFERENCES users(id, id)
+
+  FOREIGN KEY (userId)
+    REFERENCES users(id),
+
+  FOREIGN KEY (friendId)
+    REFERENCES users(id)
 );
 
 /*  Execute this file from the command line by typing:
